@@ -11,7 +11,6 @@ def nao_entre_em_panico():
   limite = 100
   found = 0
   resposta = "0, "
-  lista= []
 
   while(found < limite):
     tmp = proximo
@@ -19,9 +18,8 @@ def nao_entre_em_panico():
     anterior = tmp
     found=found+1
     resposta+= str(proximo) + ","
-    lista.apppend(resposta)
-    
-  return lista
+
+  return resposta
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
