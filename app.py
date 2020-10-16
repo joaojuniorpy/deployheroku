@@ -5,26 +5,24 @@ from math import sqrt
 app = Flask(__name__)
 
 @app.route('/')
-def primos():
-	anterior = 0
-	proximo = 0
-	lista = []
+def nao_entre_em_panico():
+  proximo = 1
+  anterior = 0
+  limite = 100
+  found = 0
+  resposta = "0, "
 
-	while(proximo < 1000000000000000000003):
-		lista.append(proximo)
-		proximo = proximo + anterior
-		anterior = proximo - anterior
-		if(proximo == 0):
-			proximo = proximo + 1
+  while(found < limite):
+    tmp = proximo
+    proximo = proximo + anterior
+    anterior = tmp
+    found=found+1
+    resposta+= str(proximo) + ","
 
-	print(lista)
-	print("Foram printados",len(lista),"numerais")
-	return(lista)
-
+  return resposta
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
-
 
 
