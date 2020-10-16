@@ -6,26 +6,21 @@ app = Flask(__name__)
 
 @app.route('/')
 def primos():
-	limite = 100
-	
+	anterior = 0
+	proximo = 0
+	lista = []
 
-	p = 1
-	numero = 3
-	primos = "2,"
-	
-	while p < limite:
-		ehprimo = 1
-		for i in range(2, numero):
-			if numero % i == 0:
-				ehprimo = 0 
-				break
-		if (ehprimo):
-			primos = primos + str(numero) + ","
-			p += 1
-			if(p % 10 == 0):
-				primos = primos + "<br>"
-		numero += 1
-	return primos
+	while(proximo < 1000000000000000000003):
+		lista.append(proximo)
+		proximo = proximo + anterior
+		anterior = proximo - anterior
+		if(proximo == 0):
+			proximo = proximo + 1
+
+	print(lista)
+	print("Foram printados",len(lista),"numerais")
+	return(lista)
+
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
